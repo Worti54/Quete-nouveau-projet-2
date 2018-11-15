@@ -82,7 +82,7 @@ class BlogController extends AbstractController
      *
      * @param string $category the slugger
      *
-     * @Route("/category/{category}", name="blog_show_category").
+     * @Route("blog/category/{category}", name="blog_show_category").
      * @return Response A response instance
      */
     public function showByCategory(string $category) : Response
@@ -90,9 +90,6 @@ class BlogController extends AbstractController
         $categoryRepository = $this->getDoctrine()
             ->getRepository(Category::class);
         $oneCategory = $categoryRepository->findOneByName($category);
-
-
-
 
         $articleRepository = $this->getDoctrine()
             ->getRepository(Article::class);
@@ -114,7 +111,7 @@ class BlogController extends AbstractController
      *
      * @param string $category the slugger
      *
-     * @Route("/category/{category}/all", name="blog_show_category").
+     * @Route("blog/category/{category}/all", name="blog_show_category").
      * @return Response A response instance
      */
     public function showAllByCategory(string $category) : Response
