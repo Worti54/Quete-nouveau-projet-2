@@ -82,7 +82,7 @@ class BlogController extends AbstractController
      *
      * @param string $category the slugger
      *
-     * @Route("/category/{category}", name="blog_show_category").
+     * @Route("blog/category/{category}", name="blog_show_category").
      * @return Response A response instance
      */
     public function showByCategory(string $category) : Response
