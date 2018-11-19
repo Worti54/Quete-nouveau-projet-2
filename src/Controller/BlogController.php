@@ -6,7 +6,13 @@ use App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Article;
+use App\Form\ArticleSearchType;
+use App\Form\CategoryTypes;
+
+
+
 
 
 class BlogController extends AbstractController
@@ -18,7 +24,7 @@ class BlogController extends AbstractController
     * @Route("/blog", name="blog_index")
     * @return Response A response instance
     */
-    public function index() : Response
+    public function index(Request $request) : Response
     {
         $articles = $this->getDoctrine()
             ->getRepository(Article::class)
@@ -30,11 +36,36 @@ class BlogController extends AbstractController
             );
         }
 
+        $form = $this->createForm(ArticleSearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            $data = $form->getData();
+            $article = $this->getDoctrine()
+                ->getRepository(Article::class)
+                ->findOneBy(['title' => $data]);
+
+
+            return $this->render(
+                'blog/article.html.twig', [
+                    'article' => $article,
+                    'form' => $form->createView(),
+                ]
+            );
+        }
+
+
+
         return $this->render(
-            'blog/index.html.twig',
-            ['articles' => $articles]
+            'blog/index.html.twig', [
+                'articles' => $articles,
+                'form' => $form->createView(),
+            ]
         );
+
+
     }
+
 
     /**
      * Getting a article with a formatted slug for title
