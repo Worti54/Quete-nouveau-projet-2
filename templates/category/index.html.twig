@@ -3,9 +3,10 @@
 {% block title %}All categories {% endblock %}
 
 {% block body %}
+
     {{ form_start(form) }}
     {{ form_row(form.name) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button class="btn">{{ button_label|default('Add category') }}</button>
     {{ form_end(form) }}
 
     <h1>All categories from article's table : </h1>

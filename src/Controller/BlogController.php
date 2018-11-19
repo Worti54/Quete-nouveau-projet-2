@@ -9,8 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Article;
 use App\Form\ArticleSearchType;
-use App\Form\CategoryTypes;
-
+use App\Form\CategoryType;
 
 
 
