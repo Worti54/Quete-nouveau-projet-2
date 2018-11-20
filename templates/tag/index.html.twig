@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello!{% endblock %}
+
+{% block body %}
+    <h1>All tags from article's table : </h1>
+    {% for tag in tags %}
+        <div>
+            <h2>{{loop.index}} : {{ tag.name }}</h2>
+        </div>
+    {% endfor %}
+    <a href="{{ path('article') }}">
+        Back to articles.
+    </a>
+{% endblock %}

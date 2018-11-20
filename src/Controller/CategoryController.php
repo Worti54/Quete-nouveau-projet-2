@@ -59,6 +59,7 @@ class CategoryController extends AbstractController
      */
     public function show(Category $category) :Response
     {
-        return $this->render('category/index.html.twig', ['category'=>$category]);
+
+        return $this->render('category/show.html.twig', ['category'=>$category]);
     }
 }

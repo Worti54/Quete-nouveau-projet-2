@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Auteurs{% endblock %}
+
+{% block body %}
+
+    <h1>Auteur {{ tag.name }} </h1>
+        <div>
+            <h2>{{ tag.id }} / {{ tag.name }}</h2>
+
+        </div>
+    <h3>liste des articles écrits par {{ tag.name }}</h3>
+<ul>
+    {% for article in articles %}
+        <a href="/article/{{ article.id }}"><li>{{ article.title }}</li></a>
+    {% else %}
+        <li>No articles for this tag</li>
+    {% endfor %}
+    </ul>
+
+    <a href="{{ path('tag') }}">
+        Back to auteurs.
+    </a>
+{% endblock %}

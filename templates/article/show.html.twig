@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+
+    <h1>{{ article.title }} </h1>
+        <div>
+            <h2>{{ article.id }} / {{ article.title }}</h2>
+            <p>{{ article.content }}</p>
+        </div>
+    <strong>Auteur(s) :</strong>
+    <ul>
+        {% for tag in tags %}
+            <a href="/tag/{{ tag.name }}"><li>{{ tag.name }} </li></a>
+        {% else %}
+            <li>No tags for this article</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ path('article') }}">
+        Back to articles.
+    </a>
+{% endblock %}

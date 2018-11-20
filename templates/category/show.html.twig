@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}cat{% endblock %}
+
+{% block body %}
+
+    <h1>{{ category.name }} </h1>
+        <div>
+            <h2>{{ category.id }} / {{ category.name }}</h2>
+
+        </div>
+
+    <a href="{{ path('category_index') }}">
+        Back to categories.
+    </a>
+{% endblock %}
