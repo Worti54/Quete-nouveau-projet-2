@@ -25,6 +25,7 @@ class Category
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="category")
+     *
      */
     private $articles;
 

@@ -1,24 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Auteurs{% endblock %}
+{% block title %}Tag{% endblock %}
 
 {% block body %}
+    <h1>Tag</h1>
 
-    <h1>Auteur {{ tag.name }} </h1>
-        <div>
-            <h2>{{ tag.id }} / {{ tag.name }}</h2>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tag.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ tag.name }}</td>
+            </tr>
+        </tbody>
+    </table>
 
-        </div>
-    <h3>liste des articles écrits par {{ tag.name }}</h3>
-<ul>
-    {% for article in articles %}
-        <a href="/article/{{ article.id }}"><li>{{ article.title }}</li></a>
-    {% else %}
-        <li>No articles for this tag</li>
-    {% endfor %}
-    </ul>
+    <a href="{{ path('tag_index') }}">back to list</a>
 
-    <a href="{{ path('tag') }}">
-        Back to auteurs.
-    </a>
+    <a href="{{ path('tag_edit', {'id': tag.id}) }}">edit</a>
+
+    {{ include('tag/_delete_form.html.twig') }}
 {% endblock %}
