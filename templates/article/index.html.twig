@@ -3,12 +3,14 @@
 {% block title %}Articles{% endblock %}
 
 {% block body %}
+    <div class="row justify-content-center">
     {{ form_start(form) }}
     {{ form_row(form.title) }}
     {{ form_row(form.content) }}
     {{ form_row(form.category) }}
     <button type="submit" name="btnSearch">Ajouter</button>
     {{ form_end(form) }}
+    </div>
     <h1>All articles from article's table : </h1>
     {% for article in articles %}
         <div>
